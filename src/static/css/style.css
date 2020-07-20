@@ -1,0 +1,31 @@
+.navbar{
+    background-color: rgb(217, 217, 217) !important;
+}
+.product-section{
+    margin-top: 20px !important;
+}
+.product-section img{
+    width:200px;
+    height:200px;
+}
+#search{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+    
+}
+#footer{
+    margin-top: 50px;;
+}
+.footer-row{
+    margin-top:20px;
+}
+.product-img{
+    width:200px;
+    height:200px;
+}
+
+.questions{
+    margin:10px;
+    background-color: beige;
+}
