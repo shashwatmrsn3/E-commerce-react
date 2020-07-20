@@ -1,27 +1,46 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Redirect,Link} from 'react-router-dom';
+import ProductItem from './ProductItem';
 
-const Seller = ({isSellerLoggedIn}) => {
+const Seller = ({isSellerLoggedIn,products}) => {
     
     if(!isSellerLoggedIn){
-        return <div>You have to be logged in as a vendor to continue </div>
+        return <div className="container">You have to be logged in as a vendor to continue </div>
     }
     
     return(
         <div className="container">
             <br/>
             <br/>
-            <h1>Seller center</h1>
-            <h2>Welcome seller</h2>
+            
+            <h2>Welcome seller</h2><br/>
+            <h3>Products</h3>
+            <div><Link to="/addProducts">Add products</Link></div>
+
+            <div>
+                <table className="table">
+                   <tr>
+                       <td>id</td>
+                       <td>name</td>
+                       <td>description</td>
+                       <td>price</td>
+                       <td>stock</td>
+                   </tr>
+                   { products.map(product => <ProductItem product={product}/>)}
+                </table>
+            </div>
+
         </div>
+        
     );
 }
 
 
 const mapStateToProps = state => {
     return{
-        isSellerLoggedIn: state.sellerReducer.isSellerLoggedIn
+        isSellerLoggedIn: state.sellerReducer.isSellerLoggedIn,
+        products:state.sellerReducer.products
     }
 }
 export default connect(mapStateToProps)(Seller);

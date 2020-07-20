@@ -17,12 +17,12 @@ export const login = (formData) => async dispatch =>{
             payload:res.data
         });
         if(res.data.role==='ROLE_VENDOR'){
-           const products = getProductsByVendor;
-           console.log(products);
+           const  products = await axios.get(`/api/product/products`);
+           console.log(products.data);
            console.log("logged in user is vendor");
             dispatch({
-               type:'SELLER_LOGGED_IN',
-                payload:products
+                type:'SELLER_LOGGED_IN',
+                payload:products.data
            })
         }
         console.log('logged in');
@@ -55,19 +55,3 @@ export const register = (formData) => async dispatch =>{
 
 }
 
-const getProductsByVendor = () =>async dispatch => {
-    
-    const config = {
-        headers:{
-            'Content-Type':'application/json'
-        }
-    }
-    try{
-        const res = await axios.get(`/api/product/products`,config);
-        console.log("inside get products" + res.data);
-        return res.data;
-    }catch(err){
-        dispatch(setAlert({message:err.message,type:'danger'}));
-    }
-    
-}
