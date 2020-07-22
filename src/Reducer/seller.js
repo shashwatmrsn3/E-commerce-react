@@ -15,8 +15,18 @@ export default function sellerReducer(state=initialState,action){
                 products:action.payload,
                 
             }
+        case 'ADD_PRODUCT_SUCCESSFUL':
+            return{
+                ...state,
+                products:[...state.products,action.payload]
+            }
+        case 'PRODUCT_LOADED':
+            return{
+                ...state,
+                products:[...state.products,action.payload.data]
+            }
         default:
-            return state;
+        return state;
     }
 }
 

@@ -13,6 +13,7 @@ import RegisterVendor from './Components/RegisterVendor';
 import Footer from './Components/Footer';
 import Seller from './Components/Seller';
 import VendorLogIn from './Components/VendorLogIn';
+import AddProducts from './Components/AddProducts';
 
 
 
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/registerVendor" component={RegisterVendor}/>
           <Route exact path="/seller" component={Seller}/>
           <Route exact path="/vendorlogin" component={VendorLogIn}/>
+          <Route exact path="/addProducts" component={AddProducts}/>
           </Switch>
           <Footer/>
         </React.Fragment>

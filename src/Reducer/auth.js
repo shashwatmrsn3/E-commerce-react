@@ -12,7 +12,7 @@ export default function (state= initialState,action){
     switch(action.type){
         case 'LOGGED_IN':
             token:localStorage.setItem('token',action.payload.jwt);
-            console.log('token:' + action.payload.jwt);
+            
             return {
                 ...state,
                 ...action.payload,
