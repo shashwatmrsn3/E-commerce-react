@@ -16,7 +16,7 @@ const Seller = ({loadProducts,isSellerLoggedIn,products}) => {
         <div className="container">
             <br/>
             <br/>
-            
+            <Link to="/test">Test image</Link>
             <h2>Welcome seller</h2><br/>
             <h3>Products</h3>
             <div><Link to="/addProducts">Add products</Link></div>
@@ -24,13 +24,14 @@ const Seller = ({loadProducts,isSellerLoggedIn,products}) => {
             <div>
                 <table className="table">
                    <tr>
-                       <td>id</td>
-                       <td>name</td>
-                       <td>description</td>
-                       <td>price</td>
-                       <td>stock</td>
+                       <th>id</th>
+                       <th>name</th>
+                       <th>description</th>
+                       <th>price</th>
+                       <th>stock</th>
+                       <th>edit</th>
                    </tr>
-                   { products.map(product => <ProductItem product={product}/>)}
+                   { products.map(product => <ProductItem key={product.id} product={product}/>)}
                 </table>
             </div>
 

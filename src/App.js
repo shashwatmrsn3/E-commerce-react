@@ -14,6 +14,8 @@ import Footer from './Components/Footer';
 import Seller from './Components/Seller';
 import VendorLogIn from './Components/VendorLogIn';
 import AddProducts from './Components/AddProducts';
+import EditProduct from './Components/EditProduct';
+import Test from './Components/Test';
 
 
 
@@ -37,6 +39,8 @@ function App() {
           <Route exact path="/seller" component={Seller}/>
           <Route exact path="/vendorlogin" component={VendorLogIn}/>
           <Route exact path="/addProducts" component={AddProducts}/>
+          <Route exact path="/editProduct" component = {EditProduct}/>
+          <Route exact path="/test" component={Test}/>
           </Switch>
           <Footer/>
         </React.Fragment>

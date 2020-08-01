@@ -1,15 +1,21 @@
 import axios from 'axios';
 import{setAlert} from './Alert';
 
-export const addProduct = (formData,history) => async dispatch =>{
+export const addProduct = (data,history) => async dispatch =>{
     const config = {
         headers:{
-            'content-Type':'application/json'
+            'Content-Type':'multipart/form-data'
         }
     }
 
+    console.log(data.get('name'));
+    console.log(data.get('description'));
+    console.log(data.get('price'));
+    console.log(data.get('stock'));
+    console.log(data.get('image'));
+
     try{
-        const res = await axios.post(`/api/product/addProduct`,formData,config);
+        const res = await axios.post(`/api/product/addProduct`,data);
         history.push("/seller");
         console.log("new added product"+res.data);
         dispatch({
@@ -22,6 +28,8 @@ export const addProduct = (formData,history) => async dispatch =>{
         dispatch(setAlert({message:err.response.statusText,type:'danger'}));
     }
 } 
+
+
 
 
 export const loadProducts = () => async dispatch=>{
