@@ -45,3 +45,31 @@ export const loadProducts = () => async dispatch=>{
         dispatch(setAlert({message:err.msg,type:'danger'}));
     }
 }
+
+export const editProduct = (data,history) => async dispatch => {
+    console.log(data.get('name')+data.get('description')+data.get('stock')+data.get('price')+data.get('image')+data.get("id"));
+    try{
+        const res = await axios.post(`/api/product/update`,data);
+        history.push("/seller");
+        dispatch({
+            type:'PRODUCT_UPDATED',
+            payload:res.data
+        });
+        dispatch(setAlert({message:'Product Updated',type:'success'}));
+    }catch(err){
+        dispatch(setAlert({message:err.msg,type:'danger'}))
+    }
+}
+
+export const loadAllProduct = () => async dispatch =>{
+    try{
+        const res = await axios.get("/api/product/allproducts");
+        dispatch({
+            type:'ALL_PRODUCT_LOADED',
+            payload:res.data
+        })
+
+    }catch(err){
+        dispatch(setAlert({message:"Internal error. Please try again later",type:"danger"}))
+    }
+}

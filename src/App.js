@@ -24,6 +24,9 @@ function App() {
   if(localStorage.token){
     setAuthToken(localStorage.token);
   }
+  if (typeof window !== 'undefined') {
+    window.React = React;
+}
   return (
     <Provider store={store}>
       <Router>

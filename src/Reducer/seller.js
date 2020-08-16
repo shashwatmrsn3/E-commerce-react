@@ -25,6 +25,12 @@ export default function sellerReducer(state=initialState,action){
                 ...state,
                 products:[...state.products,action.payload.data]
             }
+        case 'PRODUCT_UPDATED':
+            return{
+                ...state,
+                products: state.products.map(product => (product.id === action.payload.id) ? action.payload : product)
+            }  
+         
         default:
         return state;
     }
