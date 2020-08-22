@@ -16,6 +16,9 @@ import VendorLogIn from './Components/VendorLogIn';
 import AddProducts from './Components/AddProducts';
 import EditProduct from './Components/EditProduct';
 import Test from './Components/Test';
+import ProductDetail from './Components/ProductDetails';
+import ProductDetails from './Components/ProductDetails';
+import Cart from './Components/Cart';
 
 
 
@@ -44,6 +47,8 @@ function App() {
           <Route exact path="/addProducts" component={AddProducts}/>
           <Route exact path="/editProduct" component = {EditProduct}/>
           <Route exact path="/test" component={Test}/>
+          <Route exact path = "/productDetails" component={ProductDetails}/>
+          <Route exact path = "/cart" component = {Cart}/>
           </Switch>
           <Footer/>
         </React.Fragment>

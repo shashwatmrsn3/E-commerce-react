@@ -11,6 +11,8 @@ export default function productReducer(state = initialState,action){
                 products:action.payload,
                 loading:false
             }
+        
+
         default:
             return state;
     }

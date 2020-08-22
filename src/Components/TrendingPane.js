@@ -6,7 +6,7 @@ import {loadAllProduct} from "../Actions/Product";
 const TrendingPane = ({products,loading,loadAllProduct}) => {
     loadAllProduct();
     
-    return loading? <h2>Loading</h2> : (
+    return loading? <div className="container"><h2>Loading</h2></div> : (
         <div className="container product-section " id="">
             <h3>Just for you</h3>
             <div className="row mx-auto">
