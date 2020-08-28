@@ -2,11 +2,15 @@ import axios from 'axios';
 import{setAlert} from './Alert';
 
 export const addToCartAsGuest = (id,quantity,product) => async dispatch =>{
-    
+    const order = {
+        product:product,
+        quantity:quantity
+    }
+    console.log("quantity:"+quantity);
     dispatch({
         type:'ADD_TO_CART_AS_GUEST',
         payload:{
-            id,quantity,product
+           order
         }
     });
     dispatch(setAlert({message:"Added to cart",type:"success"}));

@@ -10,7 +10,10 @@ const Cart = (props) => {
             <h2>Cart</h2>
             <table border="1">
                 <tr><th>Image</th><th>Name</th><th>Quantity</th></tr>
-                {props.products.map((product,index) => <tr><td><img className="edit-image" src={"http://localhost:8080/getImage/"+product.id}/></td><td>{product.name}</td><td>{props.quantities[index]}</td></tr>)}
+                {Object.entries(props.products).map((value)=>
+                    <tr><td><img className="edit-image" src={"http://localhost:8080/getImage/"+value[0]}/></td><td>{value[1].name}</td><td>{value[1].quantity}</td></tr>
+                )}
+                {/* {Object.keys(props.products).map((key,index) => <tr><td><img className="edit-image" src={"http://localhost:8080/getImage/"+key}/></td><td>{props.products[key]}</td><td>{props.products[key].quantity}</td></tr>)} */}
             </table>
         </div>
     )
@@ -19,7 +22,8 @@ const Cart = (props) => {
 const mapStateToProps = state => {
     return{
         products:state.orderReducer.products,
-        quantities: state.orderReducer.quantity
+        cartValue:state.orderReducer.cartValue,
+        cartQuantity:state.orderReducer.cartQuantity
     }
 }
 export default connect(mapStateToProps)(Cart);

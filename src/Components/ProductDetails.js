@@ -38,14 +38,18 @@ const ProductDetails =(props ) => {
                 <h2>{name}</h2>
                 <h4>Rs {price}</h4>
                 <p>Rating: 4.5</p>
-                <form onSubmit={onSubmit}>
-                <p>Quantity: <select id="quantity" value={quantity} name="quantity" onChange={onChange} >
+                <form onSubmit={onSubmit}> 
+                
+                <br/>
+                Quantity: <select onChange={onChange} name="quantity" value={quantity}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                </select></p>
+                </select>
+                <br/>
+                <br/>
                 <input type="submit" value="Add to cart" className="btn btn-primary"/>
                 </form>
                 <br/>
