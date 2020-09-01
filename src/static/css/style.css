@@ -34,3 +34,7 @@
     widows: 100px;;
     height:100px;
 }
+
+table td,th {
+    text-align:center
+}

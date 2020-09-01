@@ -19,6 +19,7 @@ import Test from './Components/Test';
 import ProductDetail from './Components/ProductDetails';
 import ProductDetails from './Components/ProductDetails';
 import Cart from './Components/Cart';
+import  Shipping  from './Components/Shipping';
 
 
 
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/test" component={Test}/>
           <Route exact path = "/productDetails" component={ProductDetails}/>
           <Route exact path = "/cart" component = {Cart}/>
+          <Route exact path = "/shipping" component={Shipping}/>
           </Switch>
           <Footer/>
         </React.Fragment>

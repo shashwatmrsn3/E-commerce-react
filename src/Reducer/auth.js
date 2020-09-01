@@ -3,7 +3,7 @@ import {createStore} from 'redux';
 const initialState = {
     token:localStorage.getItem('token'),
     user:null,
-    isAuthenticated:null,
+    isAuthenticated:false,
     loading:true,
     role:''
 };

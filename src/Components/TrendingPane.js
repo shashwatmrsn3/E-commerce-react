@@ -4,7 +4,7 @@ import Product from './Product';
 import {loadAllProduct} from "../Actions/Product";
 
 const TrendingPane = ({products,loading,loadAllProduct}) => {
-    loadAllProduct();
+    React.useEffect(()=>{loadAllProduct()},[])
     
     return loading? <div className="container"><h2>Loading</h2></div> : (
         <div className="container product-section " id="">

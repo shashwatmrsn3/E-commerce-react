@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom';
 const Navbar = ({isAuthenticated}) =>{
   
   const authLinks=( <div className="d-flex justify-content-right">
-  <span><a className="m-2 text-dark"  href="">Cart</a></span> 
-  <span><a className="m-2 text-dark"  href="">Account</a></span>
-  <span><a className="m-2 text-dark"  href="">Logout</a></span>
+  <span><Link to="/cart" className="m-2 text-dark"  href="">Cart</Link></span> 
+  <span><Link to="/account" className="m-2 text-dark"  href="">Account</Link></span> 
+  <span><Link to="/logout" className="m-2 text-dark"  href="">Logout</Link></span> 
   </div>);
 
   const guestLinks = ( <div className="d-flex justify-content-right">

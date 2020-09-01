@@ -1,9 +1,10 @@
 import React,{useState} from 'react';
 import { login } from '../Actions/Login';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
+import {useHistory} from 'react-router';
 
-const Login = ({isAuthenticated,login}) => {
+const Login = ({isAuthenticated,login,location}) => {
     
     const[formData,setFormData] = useState({
         email:'',
@@ -12,11 +13,13 @@ const Login = ({isAuthenticated,login}) => {
     const{email,password} = formData;
     const onChange = (e) => setFormData({...formData,[e.target.name]:e.target.value});
     
+    const history = useHistory();
 
     const onSubmit = async (e) =>{
        
         e.preventDefault();
-        login(formData);
+        console.log("source"+location.source);
+        login(formData,location.source,history);
     }
 
     

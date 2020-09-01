@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {setAlert} from './Alert';
+import {useHistory} from 'react-router';
 
-export const login = (formData) => async dispatch =>{
+export const login = (formData,source,history) => async dispatch =>{
     console.log('inside login yay');
     const {email,password} = formData;
     const config = {
@@ -12,10 +13,18 @@ export const login = (formData) => async dispatch =>{
     
     try{
         const res = await axios.post(`/api/user/login`,formData,config);
+        if(source==="cart"){
+            dispatch({
+                type:'LOGGED_IN',
+                payload:res.data
+            });
+            history.push("/cart")
+        }else{
         dispatch({
             type:'LOGGED_IN',
             payload:res.data
         });
+    }
         if(res.data.role==='ROLE_VENDOR'){
            const  products = await axios.get(`/api/product/products`);
            console.log(products.data);
@@ -27,8 +36,9 @@ export const login = (formData) => async dispatch =>{
         }
         console.log('logged in');
     }catch(err){
-        console.log('login failed');
-    }
+        
+        dispatch(setAlert({message:err.response.data.message,type:"danger"})); 
+   }
 }
 
 export const register = (formData) => async dispatch =>{
