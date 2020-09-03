@@ -4,10 +4,11 @@ import {alert} from './alert';
 import sellerReducer from './seller';
 import productReducer from './product';
 import orderReducer from './order';
+import accountReducer from './account' 
 
 const rootReducer = combineReducers(
     {
-        auth,alert,sellerReducer,productReducer,orderReducer
+        auth,alert,sellerReducer,productReducer,orderReducer,accountReducer
     }
 );
 

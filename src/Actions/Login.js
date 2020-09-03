@@ -65,3 +65,16 @@ export const register = (formData) => async dispatch =>{
 
 }
 
+export const getUserDetails = (id) => async dispatch =>{
+    try{
+        const res = await axios.get(`/api/user/getDetails/`+id);
+        dispatch({
+           
+            payload:res.data,
+            type:"ACCOUNT_INFORMATION_LOADED",
+        });
+    }catch(err){
+        dispatch(setAlert({message:err.response.data.message,type:"danger"}))
+    }
+}
+

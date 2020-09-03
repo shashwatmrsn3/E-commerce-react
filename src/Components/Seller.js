@@ -11,12 +11,18 @@ const Seller = ({loadProducts,isSellerLoggedIn,products}) => {
     if(!isSellerLoggedIn){
         return <div className="container">You have to be logged in as a vendor to continue </div>
     }
-    
+    const jsx = <div><h2>Welcome seller</h2><br/>
+    <h3>Products</h3>
+    <div><Link to="/addProducts">Add products</Link></div>
+    </div>
+    if(products === undefined) {
+        return jsx
+    }else{
     return(
         <div className="container">
             <br/>
             <br/>
-            <Link to="/test">Test image</Link>
+            
             <h2>Welcome seller</h2><br/>
             <h3>Products</h3>
             <div><Link to="/addProducts">Add products</Link></div>
@@ -31,13 +37,14 @@ const Seller = ({loadProducts,isSellerLoggedIn,products}) => {
                        <th>stock</th>
                        <th>edit</th>
                    </tr>
+                   
                    { products.map(product => <ProductItem key={product.id} product={product}/>)}
                 </table>
             </div>
 
         </div>
         
-    );
+    );}
 }
 
 

@@ -20,6 +20,7 @@ import ProductDetail from './Components/ProductDetails';
 import ProductDetails from './Components/ProductDetails';
 import Cart from './Components/Cart';
 import  Shipping  from './Components/Shipping';
+import Account from './Components/Account';
 
 
 
@@ -51,6 +52,7 @@ function App() {
           <Route exact path = "/productDetails" component={ProductDetails}/>
           <Route exact path = "/cart" component = {Cart}/>
           <Route exact path = "/shipping" component={Shipping}/>
+          <Route exact path="/account" component={Account}/>
           </Switch>
           <Footer/>
         </React.Fragment>

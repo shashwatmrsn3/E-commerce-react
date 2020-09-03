@@ -27,7 +27,7 @@ const Cart = (props) => {
         <div className="container">
             <br/>
             <h2>Cart</h2>
-            <table border="1">
+            <table border="1" className="cart-table">
                 <tr><th colSpan="2"> Product </th><th> Quantity </th><th> Price </th><th> Remove </th></tr>
                 {Object.entries(props.products).map((value)=>
                     <tr><td><img className="edit-image" src={"http://localhost:8080/getImage/"+value[0]}/></td><td>{value[1].name}</td><td >{value[1].quantity}</td><td>{value[1].price}</td><td><div className="btn btn-danger" id={value[0]} onClick={onRemoveClick}>Remove</div></td></tr>

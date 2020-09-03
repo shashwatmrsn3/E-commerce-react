@@ -35,6 +35,6 @@
     height:100px;
 }
 
-table td,th {
+#cart-table {
     text-align:center
 }

@@ -5,7 +5,8 @@ const initialState = {
     user:null,
     isAuthenticated:false,
     loading:true,
-    role:''
+    role:'',
+    id:''
 };
 
 export default function (state= initialState,action){
@@ -18,7 +19,8 @@ export default function (state= initialState,action){
                 ...action.payload,
                 isAuthenticated:true,
                 loading:false,
-                role:action.payload.role
+                role:action.payload.role,
+                id:action.payload.id
             }
         case 'REGISTER_SUCCESSFUL':
             token:localStorage.setItem('token',action.payload.jwt);    
