@@ -18,22 +18,17 @@ export const login = (formData,source,history) => async dispatch =>{
                 type:'LOGGED_IN',
                 payload:res.data
             });
-            history.push("/cart")
+            history.push("/cart");
         }else{
+            
         dispatch({
             type:'LOGGED_IN',
             payload:res.data
         });
+        
+
     }
-        if(res.data.role==='ROLE_VENDOR'){
-           const  products = await axios.get(`/api/product/products`);
-           console.log(products.data);
-           console.log("logged in user is vendor");
-            dispatch({
-                type:'SELLER_LOGGED_IN',
-                payload:products.data
-           })
-        }
+        
         console.log('logged in');
     }catch(err){
         
@@ -78,3 +73,14 @@ export const getUserDetails = (id) => async dispatch =>{
     }
 }
 
+export const sellerLoggedIn = (role) => async dispatch =>{
+        if(role==="ROLE_VENDOR"){
+        const  products = await axios.get(`/api/product/products`);
+        console.log(products.data);
+        console.log("logged in user is vendor");
+         dispatch({
+             type:'SELLER_LOGGED_IN',
+             payload:products.data
+        })}
+     
+}

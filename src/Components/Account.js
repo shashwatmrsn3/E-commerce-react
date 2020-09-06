@@ -1,18 +1,34 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,Fragment} from 'react';
 import {getUserDetails} from '../Actions/Login';
 import {connect } from 'react-redux';
 const Account = (props) =>{
     useEffect(()=>{props.getUserDetails(props.id)},[])
     
-    const jsx = <div>
+    const jsx = (<div>
+     
         Name:{props.account.name}<br/>
-        Email:{props.account.email}<br/>
-        <table className="table">
+        Email:{props.account.email}<br/><br/><br/>
+        
             <h3>Orders</h3>
-            <tr><th>Id</th><th>Date</th><th>Amount</th><th>Status</th></tr>
-            {props.account.orders.map(order=> <tr><td>{order.id}</td><td>{order.date}</td><td>{order.amount}</td><td>{order.status}</td></tr>)}
-        </table>
-    </div>;
+            
+            {props.account.orders.map(order => {
+                return <Fragment><div className="rounded-top bg-light w-50 mt-10">
+                    <div className="row">
+                        <div className="col-md-6">
+                            <h3>Order #{order.id}</h3>
+                            <p>Placed date: {order.date}</p>
+                            <p>Status: {order.status}</p>
+                            <div className="btn btn-primary">Details</div>
+
+                        </div>
+                        
+                    </div>
+                </div>
+                <br/>
+                </Fragment>
+            })}
+        
+    </div>);
     return(
         <div className="container">
             <br/>

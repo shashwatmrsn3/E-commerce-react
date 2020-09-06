@@ -40,7 +40,7 @@ const ProductDetails =(props ) => {
                 <p>Rating: 4.5</p>
                 <form onSubmit={onSubmit}> 
                 
-                <br/>
+                
                 Quantity: <select onChange={onChange} name="quantity" value={quantity}>
                     <option value="1">1</option>
                     <option value="2">2</option>

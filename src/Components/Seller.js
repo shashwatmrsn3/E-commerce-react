@@ -3,11 +3,13 @@ import {connect} from 'react-redux';
 import {Redirect,Link} from 'react-router-dom';
 import ProductItem from './ProductItem';
 import {loadProducts} from '../Actions/Product';
+import {sellerLoggedIn} from '../Actions/Login';
 
-const Seller = ({loadProducts,isSellerLoggedIn,products}) => {
+const Seller = ({loadProducts,isSellerLoggedIn,products,role,sellerLoggedIn}) => {
+    
     useEffect(()=>{
-        
-    },[products]);
+        sellerLoggedIn(role);
+    },[]);
     if(!isSellerLoggedIn){
         return <div className="container">You have to be logged in as a vendor to continue </div>
     }
@@ -51,7 +53,8 @@ const Seller = ({loadProducts,isSellerLoggedIn,products}) => {
 const mapStateToProps = state => {
     return{
         isSellerLoggedIn: state.sellerReducer.isSellerLoggedIn,
-        products:state.sellerReducer.products
+        products:state.sellerReducer.products,
+        role:state.auth.role
     }
 }
-export default connect(mapStateToProps,{loadProducts})(Seller);
+export default connect(mapStateToProps,{loadProducts,sellerLoggedIn})(Seller);
