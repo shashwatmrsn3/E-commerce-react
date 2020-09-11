@@ -22,6 +22,7 @@ import Cart from './Components/Cart';
 import  Shipping  from './Components/Shipping';
 import Account from './Components/Account';
 import ProductCategoryPage from './Components/ProductCategoryPage';
+import OrderDetails from './Components/OrderDetails';
 
 
 
@@ -55,6 +56,7 @@ function App() {
           <Route exact path = "/shipping" component={Shipping}/>
           <Route exact path="/account" component={Account}/>
           <Route exact path = "/category" component={ProductCategoryPage}/>
+          <Route exact path ="/orderdetails" component={OrderDetails}/>
           </Switch>
           <Footer/>
         </React.Fragment>

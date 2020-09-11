@@ -25,7 +25,8 @@ export default function (state= initialState,action){
                 token:action.payload.jwt
             }
         case 'REGISTER_SUCCESSFUL':
-            token:localStorage.setItem('token',action.payload.jwt);    
+            token:localStorage.setItem('token',action.payload.jwt); 
+            setAuthToken(action.payload.jwt);   
             return {
                 ...state,
                 isAuthenticated:true,

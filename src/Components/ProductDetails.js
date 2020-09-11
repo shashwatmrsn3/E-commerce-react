@@ -3,14 +3,24 @@ import Homepage from './Homepage';
 import {Redirect, useHistory} from 'react-router-dom';
 import { connect} from "react-redux";
 import {addToCartAsGuest,addToCartAsUser} from '../Actions/Order';
+import {rateProduct} from '../Actions/Product';
 
 const ProductDetails =(props ) => {
+    const history = useHistory();
     const [data,setData] = useState({
         quantity:1
     });
-    if(typeof props.location.product === 'undefined') return <Redirect to="/"/>;
-    const {id,name,description,price,stock,customImageFile} = props.location.product;
+    const [ratingData,setRatingData] = useState({
+        ratingNumber:1,
+        review:''
+    });
+    const {ratingNumber,review} = ratingData;
     
+    if(typeof props.location.product === 'undefined') return <Redirect to="/"/>;
+    const {id,name,description,price,stock,customImageFile,rating} = props.location.product;
+    var totalRating=0;
+    rating.map(rate=> totalRating = totalRating+rate.rating);
+    const avgrating = totalRating/rating.length;
     const {quantity} = data;
     const onSubmit = e =>{
         e.preventDefault();
@@ -18,10 +28,20 @@ const ProductDetails =(props ) => {
         
         
     }
+    const onChangeRatingData = (e) =>{
+        e.preventDefault();
+        setRatingData({...ratingData,[e.target.name]:e.target.value});
+        
+    } 
    const onChange = e =>{
        e.preventDefault();
        setData({...data,[e.target.name]:e.target.value});
        
+   }
+   
+   const onSubmitRating =e =>{
+        e.preventDefault();
+        props.rateProduct({rating:ratingNumber,review:review},id,history);
    }
     return (
         <div className="container product-container bg-light">
@@ -37,7 +57,7 @@ const ProductDetails =(props ) => {
             <div className="col-6">
                 <h2>{name}</h2>
                 <h4>Rs {price}</h4>
-                <p>Rating: 4.5</p>
+                <p>Rating: {rating.length===0? <span>No ratings</span> : avgrating}</p>
                 <form onSubmit={onSubmit}> 
                 
                 
@@ -73,13 +93,29 @@ const ProductDetails =(props ) => {
             <div className="col-6">
                 <h2>Reviews</h2>
                 <div className="questions">
-                    <p>Rating: 5</p>
-                    <p>Loved the product</p>
+                    <h3>Rate</h3>
+                    <form onSubmit={onSubmitRating}>
+                    Rating: <select name="ratingNumber" value={ratingNumber} onChange={onChangeRatingData}>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select><br/>
+                    Review: <input type="text-box" name="review" value={review} onChange={onChangeRatingData}/>
+                    <br/><input type="submit" className="btn btn-primary"/>
+                    </form>
                 </div>
-                <div className="questions">
-                    <p>Rating: 2</p>
-                    <p>Quality is not very nice</p>
-                </div>
+                
+                   {rating.map(rate=>{
+                       return(
+                        <div className="questions">
+                       <div><p>Rating: {rate.rating}</p>
+                       <p>Review: {rate.review}</p>
+                       </div>
+                       </div>);
+                   })}
+                
             </div>
         </div>
     </div>
@@ -91,4 +127,4 @@ const mapStateToProps = state => {
         loggedIn : state.auth.isAuthenticated
     }
 }
-export default connect(mapStateToProps,{addToCartAsGuest,addToCartAsUser})(ProductDetails);
+export default connect(mapStateToProps,{addToCartAsGuest,addToCartAsUser,rateProduct})(ProductDetails);

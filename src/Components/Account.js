@@ -1,6 +1,8 @@
 import React,{useEffect,Fragment} from 'react';
 import {getUserDetails} from '../Actions/Login';
 import {connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+
 const Account = (props) =>{
     useEffect(()=>{props.getUserDetails(props.id)},[])
     
@@ -18,7 +20,7 @@ const Account = (props) =>{
                             <h3>Order #{order.id}</h3>
                             <p>Placed date: {order.date}</p>
                             <p>Status: {order.status}</p>
-                            <div className="btn btn-primary">Details</div>
+                            <Link to={{pathname:"/orderdetails",order:order}}><div className="btn btn-primary"> Details</div></Link>
 
                         </div>
                         

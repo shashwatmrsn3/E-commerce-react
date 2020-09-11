@@ -73,3 +73,14 @@ export const loadAllProduct = () => async dispatch =>{
         dispatch(setAlert({message:"Internal error. Please try again later",type:"danger"}))
     }
 }
+
+export const rateProduct =(data,id,history) => async dispatch =>{
+    try{
+        const res = await axios.post(`/api/rating/rate/${id}`,data);
+        
+        dispatch(setAlert({message:'Question asked',type:'success'}));
+        history.push("/");
+    }catch(e){
+        dispatch(setAlert({message:e.response.data.message,type:'danger'}));
+    }
+}
